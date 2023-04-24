@@ -1,0 +1,23 @@
+{
+  "name": "runningtheshow",
+  "version": "1.0.0",
+  "description": "The Automated AD Toolbox",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thesaadsalman/runningtheshow.git"
+  },
+  "author": "Saad Salman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thesaadsalman/runningtheshow/issues"
+  },
+  "homepage": "https://github.com/thesaadsalman/runningtheshow#readme",
+  "devDependencies": {
+    "electron": "^24.1.2"
+  }
+}

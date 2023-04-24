@@ -72,6 +72,7 @@ def zipcode_to_timezone(zipcode):
     location = pyzipcode.ZipCodeDatabase().get(zipcode)
     # Get timezone for the latitude and longitude
     timezone = pytz.timezone(pytz.country_timezones('us')[0])  # assume ZIP code is in the US
+    print(timezone)
     timezone_name = timezone.zone
     
     # Return the timezone name
