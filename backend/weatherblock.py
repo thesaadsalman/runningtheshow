@@ -3,6 +3,8 @@ import requests
 import pyzipcode
 import datetime
 import pytz
+from timezonefinder import TimezoneFinder
+
 
 weathercodes = {
     0: "Clear Sky",
@@ -67,6 +69,7 @@ def date_format_from_iso(date_str):
     date_formatted = f"{month}-{day}-{year}"
     return date_formatted
 
+# This Absolutley Does Not Work
 def zipcode_to_timezone(zipcode):
     # Get latitude and longitude for the ZIP code
     location = pyzipcode.ZipCodeDatabase().get(zipcode)
@@ -87,7 +90,9 @@ nomi = pgeocode.Nominatim("us")
 latitude = nomi.query_postal_code(zipcode).latitude
 longitude = nomi.query_postal_code(zipcode).longitude
 date_range = get_date_range(start, end)
-timezone = zipcode_to_timezone(zipcode)
+
+tf = TimezoneFinder() 
+timezone = tf.timezone_at(lng=longitude, lat=latitude)
 
 response = requests.get(
     f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&forecast_days=1&start_date={start}&end_date={end}&timezone={timezone}&timeformat=unixtime"
